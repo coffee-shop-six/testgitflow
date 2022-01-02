@@ -30,12 +30,12 @@ jobs:
         run: echo "prod"
 
   deploy-prod: 
-    test:
-      needs: build-prod
-      runs-on: ubuntu-latest
-      steps:
-        - name: print
-          run: echo "deploy prod"
+    needs: build-prod
+    runs-on: ubuntu-latest
+    if: startsWith( github.ref, 'refs/tags/releases-prod/')
+    steps:
+      - name: print
+        run: echo "deploy prod"
 
 #------------ deploy staging ------------
   build-staging:
@@ -54,12 +54,12 @@ jobs:
         run: echo "staging"
 
   deploy-staging: 
-    test:
-      needs: build-staging
-      runs-on: ubuntu-latest
-      steps:
-        - name: print
-          run: echo "deploy staging"
+    needs: build-staging
+    runs-on: ubuntu-latest
+    if: startsWith( github.ref, 'refs/tags/releases-staging/')
+    steps:
+      - name: print
+        run: echo "deploy staging"
 
   # publish:
   #   needs: test
