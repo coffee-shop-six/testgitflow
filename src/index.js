@@ -9,7 +9,7 @@ module.exports.handler = async (event) => {
         },
         body: JSON.stringify(
           {
-            text:"Hello"
+            text:"Hello world"
           },
           null,
           2
